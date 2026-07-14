@@ -20,6 +20,13 @@ VITE_WS_BASE_URL=ws://localhost:8000
 
 The client sends bearer tokens to REST endpoints and uses the raw JWT in `/ws/leaderboard?token=...`. Tokens are stored only in `sessionStorage` and are cleared on logout/tab close.
 
+### Local versus Vercel production
+
+- Local development uses `frontend/.env` (copied from `.env.example`) and therefore connects to `http://localhost:8000`.
+- Production builds automatically fall back to the deployed Render API at `https://carverse-drive-a-gamification-engine-for.onrender.com` when no Vite variables are supplied.
+- For an explicit Vercel configuration, add the two values from `.env.production.example` to **Project Settings → Environment Variables → Production**, then redeploy. The WebSocket endpoint must use `wss://` because Vercel is served over HTTPS.
+- `VITE_*` values are public browser configuration, not secrets. Do not put `JWT_SECRET`, AI keys, or employee credentials in Vercel.
+
 ## Routes
 
 - `/` — scrollable public CarVerse branding page, including the interactive supplied Spline scene and F1-style milestone animation.

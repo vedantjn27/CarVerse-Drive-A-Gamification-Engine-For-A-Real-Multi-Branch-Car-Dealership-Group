@@ -233,7 +233,14 @@ Install the prerequisite runtime, reopen PowerShell, and run the command again. 
 
 1. Set the project root to `frontend/`.
 2. Build with `npm run build`.
-3. Set `VITE_API_BASE_URL` and `VITE_WS_BASE_URL` to the deployed backend values.
+3. In **Project Settings → Environment Variables → Production**, set the values in [`frontend/.env.production.example`](frontend/.env.production.example):
+
+   ```env
+   VITE_API_BASE_URL=https://carverse-drive-a-gamification-engine-for.onrender.com
+   VITE_WS_BASE_URL=wss://carverse-drive-a-gamification-engine-for.onrender.com
+   ```
+
+   These are public frontend URLs, not secrets. Local `frontend/.env` remains pointed at `localhost:8000`.
 4. Rebuild after changing any `VITE_*` variable, because Vite embeds them at build time.
 
 For a long-running production deployment, move from disposable SQLite to managed persistence while preserving the existing state-machine and ledger rules.
