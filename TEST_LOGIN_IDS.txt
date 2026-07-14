@@ -1,0 +1,86 @@
+CARVERSE DRIVE — TEST LOGIN IDS
+================================
+
+Purpose
+-------
+Demo-only login credentials selected from carverse files/z_employees.csv.
+Every entry below has status = 1, a populated OTP, and was verified against
+the running backend authentication endpoint on 2026-07-14.
+
+Department test accounts
+------------------------
+ACCESSORIES
+Employee ID: 10026722
+OTP: 6746
+Employee: MOHAN RAJ M K
+Role: Manager
+
+ACCOUNTS
+Employee ID: 100091
+OTP: 4135
+Employee: SWAPAN MUKHERJEE
+Role: Admin
+
+CUSTOMER CARE
+Employee ID: 100132
+OTP: 7230
+Employee: SONALI MUKHERJEE
+Role: Manager
+
+EDP
+Employee ID: 100025
+OTP: 6140
+Employee: Parthasarathi Ghosh
+Role: Super Admin
+
+FINANCE
+Employee ID: 10
+OTP: 2330
+Employee: Praphulla Lunawat
+Role: Manager
+
+PDI
+Employee ID: 10027059
+OTP: 5590
+Employee: CHINNAMUTHU M R
+Role: Admin
+
+RTO / REGN TEAM
+Employee ID: 100020
+OTP: 4915
+Employee: SOURAV SAMANTA
+Role: Manager
+
+SALES
+Employee ID: 100011
+OTP: 6409
+Employee: SEKHER MONDAL
+Role: Manager
+
+SECURITY
+Employee ID: SECURITY0001
+OTP: 8595
+Employee: SECURITY MAHADEVAPURA
+Role: Not assigned in source CSV
+
+TRUEVALUE
+Employee ID: 100047
+OTP: 4767
+Employee: ARUP KUMAR SAHA
+Role: Admin
+
+Dedicated admin account
+-----------------------
+Use this account for admin-only screens and actions:
+
+Employee ID: 100025
+OTP: 6140
+Employee: Parthasarathi Ghosh
+Department: EDP
+Role: Super Admin
+
+Notes
+-----
+- Do not use the older Sampath B record 0814 / 5693: it has status = 2 and is intentionally rejected.
+- Current active Sampath B demo access: SAM814 / 9192 (Sales Manager).
+- These are demo credentials derived from the supplied CSV. Do not publish this file in a real production deployment.

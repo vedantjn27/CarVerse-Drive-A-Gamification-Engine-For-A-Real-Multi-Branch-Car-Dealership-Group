@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 180">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#0a0a1a"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff">
+        <animate attributeName="stop-color" values="#00d4ff;#ffd700;#ff0066;#00ff88;#00d4ff" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" style="stop-color:#ffd700">
+        <animate attributeName="stop-color" values="#ffd700;#ff0066;#00ff88;#00d4ff;#ffd700" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" style="stop-color:#ff0066">
+        <animate attributeName="stop-color" values="#ff0066;#00ff88;#00d4ff;#ffd700;#ff0066" dur="6s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="180" fill="url(#bg)" rx="12"/>
+  <rect x="0" y="0" width="1200" height="3" fill="url(#textGrad)" opacity="0.8"/>
+  <rect x="0" y="177" width="1200" height="3" fill="url(#textGrad)" opacity="0.8"/>
+  <!-- Left checkered -->
+  <g opacity="0.2">
+    <rect x="20" y="60" width="12" height="12" fill="#fff"/>
+    <rect x="32" y="60" width="12" height="12" fill="#000"/>
+    <rect x="20" y="72" width="12" height="12" fill="#000"/>
+    <rect x="32" y="72" width="12" height="12" fill="#fff"/>
+    <rect x="20" y="84" width="12" height="12" fill="#fff"/>
+    <rect x="32" y="84" width="12" height="12" fill="#000"/>
+    <rect x="20" y="96" width="12" height="12" fill="#000"/>
+    <rect x="32" y="96" width="12" height="12" fill="#fff"/>
+  </g>
+  <!-- Right checkered -->
+  <g opacity="0.2">
+    <rect x="1148" y="60" width="12" height="12" fill="#fff"/>
+    <rect x="1160" y="60" width="12" height="12" fill="#000"/>
+    <rect x="1148" y="72" width="12" height="12" fill="#000"/>
+    <rect x="1160" y="72" width="12" height="12" fill="#fff"/>
+    <rect x="1148" y="84" width="12" height="12" fill="#fff"/>
+    <rect x="1160" y="84" width="12" height="12" fill="#000"/>
+    <rect x="1148" y="96" width="12" height="12" fill="#000"/>
+    <rect x="1160" y="96" width="12" height="12" fill="#fff"/>
+  </g>
+  <!-- Racing line -->
+  <line x1="100" y1="90" x2="1100" y2="90" stroke="#1e293b" stroke-width="1" stroke-dasharray="8,6"/>
+  <!-- Moving car -->
+  <g filter="url(#glow)">
+    <ellipse cx="0" cy="90" rx="28" ry="12" fill="#ff0066" opacity="0.9">
+      <animateTransform attributeName="transform" type="translate" from="-50 0" to="1300 0" dur="5s" repeatCount="indefinite"/>
+    </ellipse>
+    <rect x="-18" y="78" width="36" height="12" rx="6" fill="#ff4499">
+      <animateTransform attributeName="transform" type="translate" from="-50 0" to="1300 0" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    <circle cx="-15" cy="102" r="6" fill="#0a0a1a" stroke="#ffd700" stroke-width="2">
+      <animateTransform attributeName="transform" type="translate" from="-50 0" to="1300 0" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="15" cy="102" r="6" fill="#0a0a1a" stroke="#ffd700" stroke-width="2">
+      <animateTransform attributeName="transform" type="translate" from="-50 0" to="1300 0" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <!-- Impact text -->
+  <text x="600" y="80" text-anchor="middle" font-family="'Segoe UI', Georgia, serif" font-size="26" font-style="italic" font-weight="700" fill="url(#textGrad)" filter="url(#glow)">
+    "Turning every dealership into a leaderboard,
+  </text>
+  <text x="600" y="115" text-anchor="middle" font-family="'Segoe UI', Georgia, serif" font-size="26" font-style="italic" font-weight="700" fill="url(#textGrad)" filter="url(#glow)">
+    every milestone into momentum."
+  </text>
+  <text x="600" y="150" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#475569" letter-spacing="3">
+    — CarVerse Drive · Built for the Dealership Revolution
+  </text>
+</svg>

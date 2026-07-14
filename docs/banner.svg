@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#0d1117;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0a0a1a;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="50%" style="stop-color:#ffd700"/>
+      <stop offset="100%" style="stop-color:#ff0066"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="300" fill="url(#bgGrad)"/>
+  <!-- Grid lines -->
+  <g stroke="#00d4ff" stroke-opacity="0.06">
+    <line x1="0" y1="60" x2="1200" y2="60"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="200" y1="0" x2="200" y2="300"/>
+    <line x1="400" y1="0" x2="400" y2="300"/>
+    <line x1="600" y1="0" x2="600" y2="300"/>
+    <line x1="800" y1="0" x2="800" y2="300"/>
+    <line x1="1000" y1="0" x2="1000" y2="300"/>
+  </g>
+  <!-- Race track line -->
+  <rect x="0" y="290" width="1200" height="3" fill="#00d4ff" opacity="0.5"/>
+  <!-- Racing dots on track -->
+  <circle cx="100" cy="291" r="5" fill="#ffd700" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="translate" from="-100 0" to="1300 0" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="300" cy="291" r="3" fill="#ff0066" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="translate" from="-300 0" to="1100 0" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="600" cy="291" r="4" fill="#00ff88" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="translate" from="-600 0" to="800 0" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Left neon bar -->
+  <rect x="0" y="0" width="6" height="300" fill="url(#titleGrad)" filter="url(#glow)"/>
+  <!-- Right neon bar -->
+  <rect x="1194" y="0" width="6" height="300" fill="url(#titleGrad)" filter="url(#glow)"/>
+  <!-- Car icon -->
+  <g transform="translate(80,125)" filter="url(#glow2)">
+    <ellipse cx="0" cy="0" rx="50" ry="22" fill="#ff0066" opacity="0.9"/>
+    <rect x="-35" y="-28" width="70" height="20" rx="10" fill="#ff4499"/>
+    <circle cx="-28" cy="20" r="10" fill="#0a0a1a" stroke="#ffd700" stroke-width="3"/>
+    <circle cx="28" cy="20" r="10" fill="#0a0a1a" stroke="#ffd700" stroke-width="3"/>
+    <circle cx="-28" cy="20" r="4" fill="#ffd700"/>
+    <circle cx="28" cy="20" r="4" fill="#ffd700"/>
+    <line x1="-70" y1="5" x2="-50" y2="0" stroke="#00d4ff" stroke-width="2" opacity="0.8"/>
+    <line x1="-85" y1="8" x2="-65" y2="3" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+    <line x1="-95" y1="11" x2="-75" y2="6" stroke="#00d4ff" stroke-width="1" opacity="0.3"/>
+  </g>
+  <!-- Main Title -->
+  <text x="600" y="110" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="72" font-weight="900" fill="url(#titleGrad)" filter="url(#glow2)" letter-spacing="4">CARVERSE DRIVE</text>
+  <!-- Subtitle -->
+  <text x="600" y="155" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#94a3b8" letter-spacing="6">GAMIFICATION ENGINE FOR A REAL DEALERSHIP NETWORK</text>
+  <!-- Badges row -->
+  <g font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="600">
+    <rect x="240" y="180" width="120" height="28" rx="14" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-width="1"/>
+    <text x="300" y="199" text-anchor="middle" fill="#00d4ff">⚡ FastAPI</text>
+    <rect x="375" y="180" width="120" height="28" rx="14" fill="#ffd700" fill-opacity="0.15" stroke="#ffd700" stroke-width="1"/>
+    <text x="435" y="199" text-anchor="middle" fill="#ffd700">🏎 React + Vite</text>
+    <rect x="510" y="180" width="140" height="28" rx="14" fill="#ff0066" fill-opacity="0.15" stroke="#ff0066" stroke-width="1"/>
+    <text x="580" y="199" text-anchor="middle" fill="#ff0066">🧠 Mistral + Gemini</text>
+    <rect x="665" y="180" width="130" height="28" rx="14" fill="#00ff88" fill-opacity="0.15" stroke="#00ff88" stroke-width="1"/>
+    <text x="730" y="199" text-anchor="middle" fill="#00ff88">🗄 SQLite + ORM</text>
+    <rect x="810" y="180" width="130" height="28" rx="14" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="1"/>
+    <text x="875" y="199" text-anchor="middle" fill="#a855f7">🌐 Render + Vercel</text>
+  </g>
+  <!-- Impact line -->
+  <text x="600" y="255" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#64748b" letter-spacing="2" font-style="italic">Turning every dealership into a leaderboard, every milestone into momentum.</text>
+  <!-- Stars -->
+  <text x="185" y="255" font-size="14" fill="#ffd700" opacity="0.7">★★★★★</text>
+  <text x="975" y="255" font-size="14" fill="#ffd700" opacity="0.7">★★★★★</text>
+  <!-- Checkered flag pattern corner -->
+  <g opacity="0.15">
+    <rect x="1140" y="0" width="15" height="15" fill="#ffffff"/>
+    <rect x="1155" y="0" width="15" height="15" fill="#000000"/>
+    <rect x="1140" y="15" width="15" height="15" fill="#000000"/>
+    <rect x="1155" y="15" width="15" height="15" fill="#ffffff"/>
+    <rect x="1140" y="30" width="15" height="15" fill="#ffffff"/>
+    <rect x="1155" y="30" width="15" height="15" fill="#000000"/>
+    <rect x="1140" y="45" width="15" height="15" fill="#000000"/>
+    <rect x="1155" y="45" width="15" height="15" fill="#ffffff"/>
+  </g>
+  <g opacity="0.15">
+    <rect x="30" y="0" width="15" height="15" fill="#ffffff"/>
+    <rect x="45" y="0" width="15" height="15" fill="#000000"/>
+    <rect x="30" y="15" width="15" height="15" fill="#000000"/>
+    <rect x="45" y="15" width="15" height="15" fill="#ffffff"/>
+    <rect x="30" y="30" width="15" height="15" fill="#ffffff"/>
+    <rect x="45" y="30" width="15" height="15" fill="#000000"/>
+    <rect x="30" y="45" width="15" height="15" fill="#000000"/>
+    <rect x="45" y="45" width="15" height="15" fill="#ffffff"/>
+  </g>
+</svg>

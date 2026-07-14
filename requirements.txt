@@ -1,0 +1,7 @@
+# Root convenience requirements file for the CarVerse Drive Python backend.
+#
+# Install from the repository root with:
+#   python -m pip install -r requirements.txt
+#
+# The React frontend has its own npm dependencies in frontend/package.json.
+-r backend/requirements.txt

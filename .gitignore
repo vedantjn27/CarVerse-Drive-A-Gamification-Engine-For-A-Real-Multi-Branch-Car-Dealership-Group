@@ -1,0 +1,37 @@
+# Local secrets and virtual environments
+backend/.env
+backend/.venv/
+.env
+.env.*
+!.env.example
+
+# Python generated files
+**/__pycache__/
+**/*.py[cod]
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.vite/
+
+# Disposable local database
+backend/data/*.db
+backend/data/*.db-*
+
+# Frontend generated files
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+# Logs and temporary runtime files
+*.log
+logs/
+*.tmp
+*.temp
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

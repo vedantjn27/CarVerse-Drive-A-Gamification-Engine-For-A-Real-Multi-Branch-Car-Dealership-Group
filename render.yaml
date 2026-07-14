@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: carverse-drive-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.11
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:///./data/carverse.db
+      - key: AUTO_RESEED_ON_STARTUP
+        value: "true"
+      - key: SCHEDULER_ENABLED
+        value: "true"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "*"
+      - key: JWT_SECRET
+        sync: false
+      - key: MISTRAL_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false

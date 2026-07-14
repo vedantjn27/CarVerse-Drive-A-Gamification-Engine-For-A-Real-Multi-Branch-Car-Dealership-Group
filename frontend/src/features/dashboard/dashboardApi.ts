@@ -1,0 +1,28 @@
+import { api } from '../../lib/api';
+import type { ActiveBooking, AiQuestBoard, AiText, Anomaly, BookingRace, BossBattle, Leaderboard, Profile, QuestBoard } from '../../types/api';
+
+export const getProfile = (token: string) => api<Profile>('/api/v1/users/me', {}, token);
+export const getServerStatus = () => api<{ process_started_at: string }>('/health');
+export const getUserStats = (token: string, userId: string) => api<Profile>(`/api/v1/users/${encodeURIComponent(userId)}/stats`, {}, token);
+export const getNudge = (token: string) => api<AiText>('/api/v1/ai/nudge/me', {}, token);
+export const getLeaders = (token: string) => api<Leaderboard>('/api/v1/leaderboards/individual?scope=week&limit=5', {}, token);
+export const getBosses = (token: string) => api<{ battles: BossBattle[] }>('/api/v1/boss-battles/active', {}, token);
+export const getQuests = (token: string) => api<QuestBoard>('/api/v1/quests/me', {}, token);
+export const getAiQuests = (token: string) => api<AiQuestBoard>('/api/v1/ai/quests/me', {}, token);
+export const getRecap = (token: string, target: string) => api<AiText>(`/api/v1/ai/recap/${encodeURIComponent(target)}`, {}, token);
+export const claimQuest = (token: string, code: string) => api<{ quest_code: string; reward_xp: number; claimed_at: string }>(`/api/v1/quests/${code}/claim`, { method: 'POST' }, token);
+export const getBoard = (token: string, kind: 'individual' | 'branch' | 'department', scope: string) => api<Leaderboard>(`/api/v1/leaderboards/${kind}?scope=${scope}&limit=100`, {}, token);
+export const getActiveBookings = (token: string, department?: string) => api<{ total: number; entries: ActiveBooking[] }>(`/api/v1/bookings/active?limit=30${department ? `&department=${encodeURIComponent(department)}` : ''}`, {}, token);
+export const getBooking = (token: string, location: string, enquiry: string) => api<BookingRace>(`/api/v1/bookings/${encodeURIComponent(location)}/${encodeURIComponent(enquiry)}`, {}, token);
+export const getBoss = (token: string, id: string) => api<BossBattle>(`/api/v1/boss-battles/${encodeURIComponent(id)}`, {}, token);
+export const claimBoss = (token: string, id: string) => api<{ battle_id: string; points: number; title: string }>(`/api/v1/boss-battles/${encodeURIComponent(id)}/claim`, { method: 'POST' }, token);
+export const getBossFlavour = (token: string, id: string) => api<{ battle: BossBattle; flavour: AiText }>(`/api/v1/ai/boss-battles/${encodeURIComponent(id)}/flavour`, {}, token);
+export const getAnomalies = (token: string) => api<{ reviews: Anomaly[] }>('/api/v1/admin/anomalies?status=OPEN', {}, token);
+export const getAnomalyExplanation = (token: string, id: number) => api<AiText>(`/api/v1/ai/anomalies/${id}/explanation`, {}, token);
+export const resolveAnomaly = (token: string, id: number, resolution_note: string) => api<{ id: number; status: string }>(`/api/v1/admin/anomalies/${id}/resolve`, { method: 'POST', body: JSON.stringify({ resolution_note }) }, token);
+export const reingest = (token: string) => api<Record<string, number>>('/api/v1/admin/ingest', { method: 'POST' }, token);
+export const tuneRule = (token: string, canonical_event: string, base_xp: number) => api<{ canonical_event: string; base_xp: number; rebuild: Record<string, number> }>('/api/v1/admin/scoring-rules', { method: 'POST', body: JSON.stringify({ canonical_event, base_xp }) }, token);
+export const completeDemoAction = (token: string, location_code: string, enquiry_no: string) => api<{ canonical_event: string; points: number; booking: string; next_stage: string; mode: string }>('/api/v1/demo/complete-next', { method: 'POST', body: JSON.stringify({ location_code, enquiry_no }) }, token);
+export const demoCheckIn = (token: string) => api<{ canonical_event: string; points: number; mode: string }>('/api/v1/demo/check-in', { method: 'POST' }, token);
+export const getWorkstation = (token: string) => api<{ department: string; mode: 'LIFECYCLE' | 'OPERATIONS'; title: string; description: string }>('/api/v1/demo/workstation', {}, token);
+export const completeRoleWork = (token: string) => api<{ canonical_event: string; points: number; title: string; mode: string }>('/api/v1/demo/complete-role-work', { method: 'POST' }, token);

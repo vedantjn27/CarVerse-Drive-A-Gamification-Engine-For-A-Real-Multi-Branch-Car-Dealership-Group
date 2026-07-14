@@ -1,0 +1,27 @@
+CarVerse Drive local startup commands
+
+Open two PowerShell terminals from the project root.
+
+Terminal 1 — Backend
+cd backend
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+
+Wait until startup completes, then confirm:
+http://127.0.0.1:8000/health
+
+Terminal 2 — Frontend
+cd frontend
+npm.cmd run dev
+
+Open the Vite URL shown in the terminal (normally):
+http://localhost:5173
+
+First-time dependency installation only:
+
+Backend:
+cd backend
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+Frontend:
+cd frontend
+npm.cmd install
