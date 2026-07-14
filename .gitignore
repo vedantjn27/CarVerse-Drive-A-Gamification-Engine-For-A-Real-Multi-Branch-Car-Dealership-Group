@@ -4,6 +4,7 @@ backend/.venv/
 .env
 .env.*
 !.env.example
+!frontend/.env.production.example
 
 # Python generated files
 **/__pycache__/

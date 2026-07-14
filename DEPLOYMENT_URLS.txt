@@ -1,0 +1,13 @@
+CarVerse Drive — Live Deployment URLs
+
+Frontend (Vercel)
+https://car-verse-drive-a-gamification-engi.vercel.app/
+
+Backend API (Render)
+https://carverse-drive-a-gamification-engine-for.onrender.com/
+
+Backend health check
+https://carverse-drive-a-gamification-engine-for.onrender.com/health
+
+Backend interactive API documentation
+https://carverse-drive-a-gamification-engine-for.onrender.com/docs
