@@ -2,6 +2,8 @@
   <img src="docs/banner.svg" alt="CarVerse Drive — Gamification Engine for a Real Dealership Network" width="100%" />
 </p>
 
+<p align="center"><sub>Premium motorsport telemetry · Verified performance · Live competition</sub></p>
+
 <p align="center">
   <a href="#-the-problem"><strong>Problem</strong></a> ·
   <a href="#-the-solution"><strong>Solution</strong></a> ·
@@ -207,7 +209,7 @@ Use this table as the project’s map. It tells you where to look before changin
 | **Run / extend the API** | [`backend/README.md`](backend/README.md), [`backend/app`](backend/app) | API behavior, domain services, routes, models, seed lifecycle, and security |
 | **Run / extend the frontend** | [`frontend/README.md`](frontend/README.md), [`frontend/src`](frontend/src) | Routes, feature modules, styling, UI integrations, and Vite configuration |
 | **Inspect source data** | [`backend/data/README.md`](backend/data/README.md) and [`carverse files`](carverse%20files) | Organizer CSV copies and the original untouched source folder |
-| **Reuse the visual assets** | [`docs`](docs) | Animated banner, animated impact footer, architecture, workflow, and command-centre hero |
+| **Reuse the visual assets** | [`docs`](docs) | Premium animated motorsport-telemetry banner/footer, architecture, workflow, and command-centre hero |
 | **Deploy the API** | [`render.yaml`](render.yaml) and [`backend/Procfile`](backend/Procfile) | Render-ready Python service configuration |
 
 ## ⚡ Quick start
@@ -277,5 +279,6 @@ The fast suite exercises the state machine, scoring engine, anti-gaming protecti
 </p>
 
 <p align="center">
-  <strong>Turning every dealership into a leaderboard, every milestone into momentum.</strong>
+  <strong>Turning every dealership into a leaderboard, every milestone into momentum.</strong><br />
+  <sub>Verified work. Visible momentum.</sub>
 </p>

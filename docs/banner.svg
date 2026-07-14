@@ -1,107 +1,81 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 360" role="img" aria-labelledby="title desc">
+  <title id="title">CarVerse Drive</title>
+  <desc id="desc">A premium automotive telemetry banner for CarVerse Drive.</desc>
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1"/>
-      <stop offset="50%" style="stop-color:#0d1117;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#0a0a1a;stop-opacity:1"/>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08111f"/>
+      <stop offset="0.55" stop-color="#0b1628"/>
+      <stop offset="1" stop-color="#07101b"/>
     </linearGradient>
-    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00d4ff"/>
-      <stop offset="50%" style="stop-color:#ffd700"/>
-      <stop offset="100%" style="stop-color:#ff0066"/>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#37d8ff"/>
+      <stop offset="0.52" stop-color="#d9ff4a"/>
+      <stop offset="1" stop-color="#37d8ff"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <linearGradient id="wordmark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#eaf3ff"/>
+      <stop offset="0.56" stop-color="#eaf3ff"/>
+      <stop offset="0.57" stop-color="#d9ff4a"/>
+      <stop offset="1" stop-color="#d9ff4a"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#37d8ff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#37d8ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-30%" y="-80%" width="160%" height="260%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="glow2">
-      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
-      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <pattern id="grid" width="100" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 100 0 L 0 0 0 60" fill="none" stroke="#6f8eb6" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
   </defs>
-  <!-- Background -->
-  <rect width="1200" height="300" fill="url(#bgGrad)"/>
-  <!-- Grid lines -->
-  <g stroke="#00d4ff" stroke-opacity="0.06">
-    <line x1="0" y1="60" x2="1200" y2="60"/>
-    <line x1="0" y1="120" x2="1200" y2="120"/>
-    <line x1="0" y1="180" x2="1200" y2="180"/>
-    <line x1="0" y1="240" x2="1200" y2="240"/>
-    <line x1="200" y1="0" x2="200" y2="300"/>
-    <line x1="400" y1="0" x2="400" y2="300"/>
-    <line x1="600" y1="0" x2="600" y2="300"/>
-    <line x1="800" y1="0" x2="800" y2="300"/>
-    <line x1="1000" y1="0" x2="1000" y2="300"/>
+
+  <rect width="1600" height="360" rx="12" fill="url(#panel)"/>
+  <rect x="1" y="1" width="1598" height="358" rx="11" fill="none" stroke="#324563"/>
+  <rect width="1600" height="360" rx="12" fill="url(#grid)"/>
+  <ellipse cx="800" cy="180" rx="540" ry="170" fill="url(#halo)"/>
+
+  <!-- restrained technical marks -->
+  <g fill="#91a7c7" fill-opacity="0.34">
+    <path d="M46 52h12v12H46zm24 0h12v12H70zm-24 24h12v12H46zm24 24h12v12H70z"/>
+    <path d="M1518 52h12v12h-12zm24 0h12v12h-12zm0 24h12v12h-12zm-24 24h12v12h-12z"/>
   </g>
-  <!-- Race track line -->
-  <rect x="0" y="290" width="1200" height="3" fill="#00d4ff" opacity="0.5"/>
-  <!-- Racing dots on track -->
-  <circle cx="100" cy="291" r="5" fill="#ffd700" filter="url(#glow)">
-    <animateTransform attributeName="transform" type="translate" from="-100 0" to="1300 0" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="300" cy="291" r="3" fill="#ff0066" filter="url(#glow)">
-    <animateTransform attributeName="transform" type="translate" from="-300 0" to="1100 0" dur="5s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="600" cy="291" r="4" fill="#00ff88" filter="url(#glow)">
-    <animateTransform attributeName="transform" type="translate" from="-600 0" to="800 0" dur="6s" repeatCount="indefinite"/>
-  </circle>
-  <!-- Left neon bar -->
-  <rect x="0" y="0" width="6" height="300" fill="url(#titleGrad)" filter="url(#glow)"/>
-  <!-- Right neon bar -->
-  <rect x="1194" y="0" width="6" height="300" fill="url(#titleGrad)" filter="url(#glow)"/>
-  <!-- Car icon -->
-  <g transform="translate(80,125)" filter="url(#glow2)">
-    <ellipse cx="0" cy="0" rx="50" ry="22" fill="#ff0066" opacity="0.9"/>
-    <rect x="-35" y="-28" width="70" height="20" rx="10" fill="#ff4499"/>
-    <circle cx="-28" cy="20" r="10" fill="#0a0a1a" stroke="#ffd700" stroke-width="3"/>
-    <circle cx="28" cy="20" r="10" fill="#0a0a1a" stroke="#ffd700" stroke-width="3"/>
-    <circle cx="-28" cy="20" r="4" fill="#ffd700"/>
-    <circle cx="28" cy="20" r="4" fill="#ffd700"/>
-    <line x1="-70" y1="5" x2="-50" y2="0" stroke="#00d4ff" stroke-width="2" opacity="0.8"/>
-    <line x1="-85" y1="8" x2="-65" y2="3" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
-    <line x1="-95" y1="11" x2="-75" y2="6" stroke="#00d4ff" stroke-width="1" opacity="0.3"/>
+
+  <!-- left telemetry emblem: abstract race car / CV monogram -->
+  <g transform="translate(112 115)">
+    <circle cx="66" cy="66" r="64" fill="#0a1728" stroke="#415a7b" stroke-width="1.5"/>
+    <circle cx="66" cy="66" r="52" fill="none" stroke="#37d8ff" stroke-opacity="0.28" stroke-dasharray="3 7"/>
+    <path d="M29 77h18l10-25h19l10 25h18l-7 14H36z" fill="none" stroke="#d9ff4a" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M51 78h30M57 52h18" stroke="#eaf3ff" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="42" cy="91" r="7" fill="#08111f" stroke="#37d8ff" stroke-width="3"/>
+    <circle cx="90" cy="91" r="7" fill="#08111f" stroke="#37d8ff" stroke-width="3"/>
+    <text x="66" y="121" text-anchor="middle" fill="#a9bdd8" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="2">CV / 01</text>
   </g>
-  <!-- Main Title -->
-  <text x="600" y="110" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="72" font-weight="900" fill="url(#titleGrad)" filter="url(#glow2)" letter-spacing="4">CARVERSE DRIVE</text>
-  <!-- Subtitle -->
-  <text x="600" y="155" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#94a3b8" letter-spacing="6">GAMIFICATION ENGINE FOR A REAL DEALERSHIP NETWORK</text>
-  <!-- Badges row -->
-  <g font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="600">
-    <rect x="240" y="180" width="120" height="28" rx="14" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-width="1"/>
-    <text x="300" y="199" text-anchor="middle" fill="#00d4ff">⚡ FastAPI</text>
-    <rect x="375" y="180" width="120" height="28" rx="14" fill="#ffd700" fill-opacity="0.15" stroke="#ffd700" stroke-width="1"/>
-    <text x="435" y="199" text-anchor="middle" fill="#ffd700">🏎 React + Vite</text>
-    <rect x="510" y="180" width="140" height="28" rx="14" fill="#ff0066" fill-opacity="0.15" stroke="#ff0066" stroke-width="1"/>
-    <text x="580" y="199" text-anchor="middle" fill="#ff0066">🧠 Mistral + Gemini</text>
-    <rect x="665" y="180" width="130" height="28" rx="14" fill="#00ff88" fill-opacity="0.15" stroke="#00ff88" stroke-width="1"/>
-    <text x="730" y="199" text-anchor="middle" fill="#00ff88">🗄 SQLite + ORM</text>
-    <rect x="810" y="180" width="130" height="28" rx="14" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="1"/>
-    <text x="875" y="199" text-anchor="middle" fill="#a855f7">🌐 Render + Vercel</text>
+
+  <!-- wordmark -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="800" y="138" text-anchor="middle" fill="url(#wordmark)" font-size="64" font-weight="800" letter-spacing="8">CARVERSE DRIVE</text>
+    <text x="800" y="178" text-anchor="middle" fill="#a9bdd8" font-size="16" font-weight="700" letter-spacing="6">VERIFIED PERFORMANCE FOR THE MODERN DEALERSHIP</text>
   </g>
-  <!-- Impact line -->
-  <text x="600" y="255" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#64748b" letter-spacing="2" font-style="italic">Turning every dealership into a leaderboard, every milestone into momentum.</text>
-  <!-- Stars -->
-  <text x="185" y="255" font-size="14" fill="#ffd700" opacity="0.7">★★★★★</text>
-  <text x="975" y="255" font-size="14" fill="#ffd700" opacity="0.7">★★★★★</text>
-  <!-- Checkered flag pattern corner -->
-  <g opacity="0.15">
-    <rect x="1140" y="0" width="15" height="15" fill="#ffffff"/>
-    <rect x="1155" y="0" width="15" height="15" fill="#000000"/>
-    <rect x="1140" y="15" width="15" height="15" fill="#000000"/>
-    <rect x="1155" y="15" width="15" height="15" fill="#ffffff"/>
-    <rect x="1140" y="30" width="15" height="15" fill="#ffffff"/>
-    <rect x="1155" y="30" width="15" height="15" fill="#000000"/>
-    <rect x="1140" y="45" width="15" height="15" fill="#000000"/>
-    <rect x="1155" y="45" width="15" height="15" fill="#ffffff"/>
+
+  <!-- enterprise game telemetry labels -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="1.3">
+    <g transform="translate(437 214)"><rect width="146" height="30" rx="15" fill="#0a1a2b" stroke="#345373"/><circle cx="18" cy="15" r="4" fill="#37d8ff"/><text x="32" y="19" fill="#c8d8ed">REAL EVENT DATA</text></g>
+    <g transform="translate(603 214)"><rect width="184" height="30" rx="15" fill="#0a1a2b" stroke="#345373"/><circle cx="18" cy="15" r="4" fill="#d9ff4a"/><text x="32" y="19" fill="#c8d8ed">VERIFIED MILESTONES</text></g>
+    <g transform="translate(807 214)"><rect width="152" height="30" rx="15" fill="#0a1a2b" stroke="#345373"/><circle cx="18" cy="15" r="4" fill="#37d8ff"/><text x="32" y="19" fill="#c8d8ed">LIVE COMPETITION</text></g>
+    <g transform="translate(979 214)"><rect width="176" height="30" rx="15" fill="#0a1a2b" stroke="#345373"/><circle cx="18" cy="15" r="4" fill="#d9ff4a"/><text x="32" y="19" fill="#c8d8ed">FAIR BY DESIGN</text></g>
   </g>
-  <g opacity="0.15">
-    <rect x="30" y="0" width="15" height="15" fill="#ffffff"/>
-    <rect x="45" y="0" width="15" height="15" fill="#000000"/>
-    <rect x="30" y="15" width="15" height="15" fill="#000000"/>
-    <rect x="45" y="15" width="15" height="15" fill="#ffffff"/>
-    <rect x="30" y="30" width="15" height="15" fill="#ffffff"/>
-    <rect x="45" y="30" width="15" height="15" fill="#000000"/>
-    <rect x="30" y="45" width="15" height="15" fill="#000000"/>
-    <rect x="45" y="45" width="15" height="15" fill="#ffffff"/>
+
+  <text x="800" y="282" text-anchor="middle" fill="#7993b5" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" letter-spacing="3">DATA-DRIVEN GAMIFICATION ENGINE · MULTI-BRANCH DEALERSHIP GROUP</text>
+
+  <!-- animated telemetry runway -->
+  <g transform="translate(76 316)">
+    <path d="M0 0H1448" stroke="#253b58" stroke-width="2"/>
+    <path d="M0 0H1448" stroke="url(#accent)" stroke-width="2" stroke-dasharray="170 1278" filter="url(#softGlow)">
+      <animate attributeName="stroke-dashoffset" values="0;-1448" dur="4.8s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="0" cy="0" r="5" fill="#37d8ff"/><circle cx="1448" cy="0" r="5" fill="#d9ff4a"/>
   </g>
+  <rect x="1" y="1" width="4" height="358" rx="2" fill="url(#accent)"/>
 </svg>
