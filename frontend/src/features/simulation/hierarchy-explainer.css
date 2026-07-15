@@ -1,0 +1,3 @@
+.hierarchy-explainer{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;margin-top:1rem;padding:1.15rem 1.3rem;border:1px solid #45617e;background:linear-gradient(100deg,#14253a,#101722)}
+.hierarchy-explainer>span{display:flex;align-items:center;gap:.45rem;color:#e9fb6b;font:.58rem 'DM Mono',monospace;letter-spacing:.1em}.hierarchy-explainer strong{display:block;margin-bottom:.25rem;font-size:.78rem}.hierarchy-explainer p{margin:0;color:#a8b6c9;font-size:.68rem;line-height:1.55}.hierarchy-explainer>b{display:flex;align-items:center;gap:.35rem;color:#38d6ff;font:.5rem 'DM Mono',monospace;letter-spacing:.08em;white-space:nowrap}
+@media(max-width:760px){.hierarchy-explainer{grid-template-columns:1fr}.hierarchy-explainer>b{white-space:normal}}

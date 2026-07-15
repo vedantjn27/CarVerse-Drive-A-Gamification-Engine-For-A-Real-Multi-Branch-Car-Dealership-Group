@@ -14,6 +14,7 @@ import { AdminPage } from './features/admin/AdminPage';
 import { RequireAdmin } from './features/admin/RequireAdmin';
 import { TvPage } from './features/tv/TvPage';
 import { PitWallPage } from './features/gameplay/PitWallPage';
+import { HierarchySimulator } from './features/simulation/HierarchySimulator';
 
 export default function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ export default function App() {
               <Route path="quests" element={<QuestsPage />} />
               <Route path="boss-battles" element={<BossBattlesPage />} />
               <Route path="pit-wall" element={<PitWallPage />} />
+              <Route path="hierarchy" element={<HierarchySimulator />} />
               <Route path="admin" element={<RequireAdmin><AdminPage /></RequireAdmin>} />
               <Route path="tv" element={<TvPage />} />
             </Route>
