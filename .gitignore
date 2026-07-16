@@ -36,6 +36,7 @@ frontend/android/app/src/main/assets/capacitor.config.json
 frontend/android/app/src/main/assets/capacitor.plugins.json
 *.jks
 *.keystore
+*.apk
 
 # Original source asset is retained locally; the optimized R8 GLB is used by the app.
 frontend/public/garage-assets/audi_r8_e-_tron_2016.glb
