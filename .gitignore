@@ -24,9 +24,22 @@ backend/data/*.db-*
 frontend/node_modules/
 frontend/dist/
 frontend/*.tsbuildinfo
+frontend/android/.gradle/
+frontend/android/build/
+frontend/android/app/build/
+frontend/android/app/release/
+frontend/android/local.properties
+frontend/android/capacitor-cordova-android-plugins/
+frontend/android/key.properties
+frontend/android/app/src/main/assets/public/
+frontend/android/app/src/main/assets/capacitor.config.json
+frontend/android/app/src/main/assets/capacitor.plugins.json
+*.jks
+*.keystore
 
 # Original source asset is retained locally; the optimized R8 GLB is used by the app.
 frontend/public/garage-assets/audi_r8_e-_tron_2016.glb
+frontend/local-assets/
 
 # Logs and temporary runtime files
 *.log

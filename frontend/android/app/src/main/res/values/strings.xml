@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CarVerse Drive</string>
+    <string name="title_activity_main">CarVerse Drive</string>
+    <string name="package_name">com.vedantjain.carversedrive</string>
+    <string name="custom_url_scheme">com.vedantjain.carversedrive</string>
+</resources>
