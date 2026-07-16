@@ -36,8 +36,8 @@ export function PitWallPage() {
   const setMission = (code: string) => { setFocus(code); localStorage.setItem(focusKey(session!.employeeId), code); };
   const joinRally = () => { setRally(true); localStorage.setItem(rallyKey(session!.employeeId),'true'); };
   useEffect(()=>{const marker=server.data?.process_started_at;if(!marker)return;const key=`carverse.rally.server.${session!.employeeId}`;const prior=localStorage.getItem(key);if(prior&&prior!==marker){setRally(false);localStorage.removeItem(rallyKey(session!.employeeId))}localStorage.setItem(key,marker)},[server.data?.process_started_at,session]);
-  const celebrate = (title: string) => { const next = awardNextCosmetic(session!.employeeId); setArtifact(next); setCelebration(title); void client.invalidateQueries(); };
-  const complete = useMutation({ mutationFn: () => completeDemoAction(token, pitStop!.location_code, pitStop!.enquiry_no), onSuccess: result => celebrate(`+${result.points} XP · ${result.canonical_event.replace(/_/g, ' ')}`) });
+  const celebrate = (title: string, unlockGarage = false) => { const next = unlockGarage ? awardNextCosmetic(session!.employeeId) : null; setArtifact(next?.name ?? null); setCelebration(title); void client.invalidateQueries(); };
+  const complete = useMutation({ mutationFn: () => completeDemoAction(token, pitStop!.location_code, pitStop!.enquiry_no), onSuccess: result => celebrate(`+${result.points} XP · ${result.canonical_event.replace(/_/g, ' ')}`, true) });
   const checkIn = useMutation({ mutationFn: () => demoCheckIn(token), onSuccess: result => celebrate(`+${result.points} XP · Daily shift check-in`) });
   const roleWork = useMutation({ mutationFn: () => completeRoleWork(token), onSuccess: result => celebrate(`+${result.points} XP · ${result.title}`) });
   useEffect(() => { if (!replaying) return; const timer = window.setTimeout(() => { setReplaying(false); setCelebration('Verified race replay complete'); }, 1700); return () => window.clearTimeout(timer); }, [replaying]);

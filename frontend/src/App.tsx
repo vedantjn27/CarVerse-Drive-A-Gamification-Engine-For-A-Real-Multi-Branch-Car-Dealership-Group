@@ -15,6 +15,7 @@ import { RequireAdmin } from './features/admin/RequireAdmin';
 import { TvPage } from './features/tv/TvPage';
 import { PitWallPage } from './features/gameplay/PitWallPage';
 import { HierarchySimulator } from './features/simulation/HierarchySimulator';
+import { RaceControlPage } from './features/race-control/RaceControlPage';
 
 export default function App() {
   const location = useLocation();
@@ -35,6 +36,7 @@ export default function App() {
               <Route path="boss-battles" element={<BossBattlesPage />} />
               <Route path="pit-wall" element={<PitWallPage />} />
               <Route path="hierarchy" element={<HierarchySimulator />} />
+              <Route path="race-control" element={<RaceControlPage />} />
               <Route path="admin" element={<RequireAdmin><AdminPage /></RequireAdmin>} />
               <Route path="tv" element={<TvPage />} />
             </Route>

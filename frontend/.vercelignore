@@ -1,0 +1,2 @@
+# Keep the original high-resolution R8 source locally; production uses the optimized 8.75 MB GLB.
+public/garage-assets/audi_r8_e-_tron_2016.glb

@@ -9,6 +9,7 @@ import { FormulaCar } from './FormulaCar';
 import { useTheme } from '../theme/ThemeContext';
 import './landing-enhancements.css';
 import sportsCarImage from '../../assets/carverse-sports-car.png';
+import mobileAccessQr from '../../assets/carverse-mobile-access-qr.png';
 
 const features = [
   { icon: Trophy, kicker: 'COMPETE WITH CONTEXT', title: 'Leagues that reward the whole dealership.', copy: 'Individual, branch, and department leaderboards turn healthy performance into a live, fair contest.' },
@@ -97,7 +98,7 @@ export function LandingPage() {
 
       <section className="statement-section"><Sparkles className="statement-spark" /><p>Turning every dealership into a leaderboard,<br /><em>every milestone into momentum.</em></p><Link className="button button--primary" to="/login">Build momentum <ArrowUpRight size={16} /></Link></section>
 
-      <footer id="contact" className="marketing-footer"><div><Link className="brand" to="/"><span className="brand-mark">CV</span><span>CARVERSE<span className="brand-dot">.</span></span></Link><p>Performance, made playable.</p></div><div><p className="footer-label">SUPPORT</p><a href="mailto:vedantjain273@gmail.com">vedantjain273@gmail.com</a></div><div><p className="footer-label">GET STARTED</p><Link to="/login">Enter the grid <ArrowUpRight size={14} /></Link></div></footer>
+      <footer id="contact" className="marketing-footer"><div><Link className="brand" to="/"><span className="brand-mark">CV</span><span>CARVERSE<span className="brand-dot">.</span></span></Link><p>Performance, made playable.</p></div><div><p className="footer-label">SUPPORT</p><a href="mailto:vedantjain273@gmail.com">vedantjain273@gmail.com</a></div><div className="footer-mobile-access"><img src={mobileAccessQr} alt="QR code to open CarVerse Drive on a mobile device" /><div><p className="footer-label">MOBILE ACCESS</p><strong>Scan to open on<br />your mobile device</strong></div></div><div><p className="footer-label">GET STARTED</p><Link to="/login">Enter the grid <ArrowUpRight size={14} /></Link></div></footer>
     </main>
   );
 }
