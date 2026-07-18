@@ -3,13 +3,12 @@ import { CarFront, Check, LockKeyhole, Sparkles, Trophy, X } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react';
 import wallpaper from '../../assets/carverse-sports-car.png';
 import { GltfGarage } from './GltfGarage';
-import { equippedKey, garageCatalog, loadGarage, type GarageItem } from './garageCatalog';
+import { clearNewGarageReward, equippedKey, garageCatalog, getNewGarageReward, loadGarage, starterItem, type GarageItem } from './garageCatalog';
 import './garage-experience.css';
 import './garage-unlock.css';
 
 const accent = ['#e9fb6b', '#38d6ff', '#ffb74f', '#ff6159'];
 const sparks = Array.from({ length: 28 }, (_, index) => index);
-const newKey = (employeeId: string) => `carverse.garage.new.v4.${employeeId}`;
 
 function UnlockReveal({ item, close }: { item: GarageItem; close: () => void }) {
   return <motion.div className="garage-unlock-reveal" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -22,13 +21,13 @@ export function DriverGarage({ employeeId = 'local' }: { employeeId?: string }) 
   const [open, setOpen] = useState(false);
   const [inventory, setInventory] = useState(() => loadGarage(employeeId));
   const [selectedId, setSelectedId] = useState(() => localStorage.getItem(equippedKey(employeeId)) ?? loadGarage(employeeId)[0]);
-  const [newId, setNewId] = useState(() => localStorage.getItem(newKey(employeeId)));
+  const [newId, setNewId] = useState(() => getNewGarageReward(employeeId));
   const [reveal, setReveal] = useState(false);
-  useEffect(() => { const refresh = () => { setInventory(loadGarage(employeeId)); setNewId(localStorage.getItem(newKey(employeeId))); }; window.addEventListener('carverse-garage-unlocked', refresh); return () => window.removeEventListener('carverse-garage-unlocked', refresh); }, [employeeId]);
+  useEffect(() => { const refresh = () => { const refreshed = loadGarage(employeeId); const equipped = localStorage.getItem(equippedKey(employeeId)); setInventory(refreshed); setSelectedId(refreshed.includes(equipped ?? '') ? equipped! : starterItem.id); setNewId(getNewGarageReward(employeeId)); }; window.addEventListener('carverse-garage-unlocked', refresh); return () => window.removeEventListener('carverse-garage-unlocked', refresh); }, [employeeId]);
   const selected = useMemo(() => garageCatalog.find(item => item.id === selectedId) ?? garageCatalog[0], [selectedId]);
   const newItem = garageCatalog.find(item => item.id === newId) ?? null;
   const select = (item: GarageItem) => { if (!inventory.includes(item.id)) return; setSelectedId(item.id); localStorage.setItem(equippedKey(employeeId), item.id); };
-  const closeReveal = () => { setReveal(false); localStorage.removeItem(newKey(employeeId)); setNewId(null); };
+  const closeReveal = () => { setReveal(false); clearNewGarageReward(employeeId); setNewId(null); };
   return <>
     <button className="garage-entry" style={{ backgroundImage: `linear-gradient(90deg,#0b101bd9 8%,#0b101b99 48%,#0b101b1c),url(${wallpaper})` }} onClick={() => setOpen(true)}><span className="garage-entry__eyebrow"><CarFront size={16} /> DRIVER GARAGE</span><strong>Your collection<br /><em>awaits.</em></strong><p>{inventory.length}/{garageCatalog.length} assets unlocked · Enter showroom</p><span className="garage-entry__cta">Open driver garage <Sparkles size={15} /></span></button>
     {newItem && <motion.button className={`garage-new-unlock${newItem.grand ? ' garage-new-unlock--grand' : ''}`} onClick={() => setReveal(true)} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} whileHover={{ y: -4, scale: 1.01 }} whileTap={{ scale: .98 }}><i className="garage-new-unlock__scan" aria-hidden /><span className="garage-new-unlock__glow" aria-hidden /><span className="garage-new-unlock__badge">{newItem.grand ? 'GRAND REWARD' : 'REWARD DROP'}</span><span className="garage-new-unlock__icon">{newItem.kind === 'vehicle' ? <CarFront size={30} /> : <Sparkles size={30} />}</span><span className="garage-new-unlock__copy"><small>NEW UNLOCK AVAILABLE</small><strong>{newItem.name}</strong><em>{newItem.grand ? 'Your prestige vehicle is ready.' : 'A new Garage asset is waiting for you.'}</em></span><span className="garage-new-unlock__cta">Reveal reward <Sparkles size={15} /></span></motion.button>}

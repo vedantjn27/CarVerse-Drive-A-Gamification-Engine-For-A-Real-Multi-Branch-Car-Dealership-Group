@@ -12,8 +12,37 @@ export const garageCatalog: GarageItem[] = [
 
 export const starterItem = garageCatalog.find(item => item.starter)!;
 export const unlockItems = garageCatalog.filter(item => !item.starter);
-// v4 deliberately starts a clean, predictable demo progression.
-const inventoryKey = (employeeId: string) => `carverse.garage.v4.${employeeId}`;
-export const equippedKey = (employeeId: string) => `carverse.garage.equipped.v4.${employeeId}`;
-export const loadGarage = (employeeId: string) => { try { const items = JSON.parse(localStorage.getItem(inventoryKey(employeeId)) ?? 'null') as string[] | null; return items?.length ? items : [starterItem.id]; } catch { return [starterItem.id]; } };
-export const awardNextGarageItem = (employeeId: string) => { const unlocked = loadGarage(employeeId); const next = unlockItems.find(item => !unlocked.includes(item.id)); if (!next) return null; localStorage.setItem(inventoryKey(employeeId), JSON.stringify([...unlocked, next.id])); localStorage.setItem(`carverse.garage.new.v4.${employeeId}`, next.id); window.dispatchEvent(new Event('carverse-garage-unlocked')); return next; };
+
+// Garage rewards are a demo layer, but their lifetime matches one backend run.
+// When FastAPI restarts, /health reports a new process_started_at value and a
+// fresh garage namespace is used automatically.
+const backendRunKey = 'carverse.garage.backend-run.v1';
+const currentRun = () => localStorage.getItem(backendRunKey) ?? 'awaiting-backend';
+const inventoryKey = (employeeId: string) => `carverse.garage.v5.${currentRun()}.${employeeId}`;
+export const equippedKey = (employeeId: string) => `carverse.garage.equipped.v5.${currentRun()}.${employeeId}`;
+const newRewardKey = (employeeId: string) => `carverse.garage.new.v5.${currentRun()}.${employeeId}`;
+
+export const setGarageBackendRun = (processStartedAt: string) => {
+  if (localStorage.getItem(backendRunKey) === processStartedAt) return;
+  localStorage.setItem(backendRunKey, processStartedAt);
+  window.dispatchEvent(new Event('carverse-garage-unlocked'));
+};
+
+export const loadGarage = (employeeId: string) => {
+  try {
+    const items = JSON.parse(localStorage.getItem(inventoryKey(employeeId)) ?? 'null') as string[] | null;
+    return items?.length ? items : [starterItem.id];
+  } catch { return [starterItem.id]; }
+};
+
+export const getNewGarageReward = (employeeId: string) => localStorage.getItem(newRewardKey(employeeId));
+export const clearNewGarageReward = (employeeId: string) => localStorage.removeItem(newRewardKey(employeeId));
+export const awardNextGarageItem = (employeeId: string) => {
+  const unlocked = loadGarage(employeeId);
+  const next = unlockItems.find(item => !unlocked.includes(item.id));
+  if (!next) return null;
+  localStorage.setItem(inventoryKey(employeeId), JSON.stringify([...unlocked, next.id]));
+  localStorage.setItem(newRewardKey(employeeId), next.id);
+  window.dispatchEvent(new Event('carverse-garage-unlocked'));
+  return next;
+};

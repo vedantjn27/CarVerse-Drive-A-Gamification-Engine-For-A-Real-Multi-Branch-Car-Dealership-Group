@@ -1,4 +1,6 @@
 import { AnimatePresence, MotionConfig } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { LandingPage } from './features/marketing/LandingPage';
 import { NotFoundPage } from './shared/NotFoundPage';
@@ -16,12 +18,21 @@ import { TvPage } from './features/tv/TvPage';
 import { PitWallPage } from './features/gameplay/PitWallPage';
 import { HierarchySimulator } from './features/simulation/HierarchySimulator';
 import { RaceControlPage } from './features/race-control/RaceControlPage';
+import { healthCheck } from './features/auth/authApi';
+import { setGarageBackendRun } from './features/enhancements/garageCatalog';
+
+function GarageRunSynchronizer() {
+  const health = useQuery({ queryKey: ['garage-backend-run'], queryFn: healthCheck, retry: 2, refetchInterval: 15_000 });
+  useEffect(() => { if (health.data?.process_started_at) setGarageBackendRun(health.data.process_started_at); }, [health.data?.process_started_at]);
+  return null;
+}
 
 export default function App() {
   const location = useLocation();
 
   return (
     <MotionConfig reducedMotion="user">
+      <GarageRunSynchronizer />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<LandingPage />} />

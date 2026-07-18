@@ -1,4 +1,4 @@
-export interface HealthResponse { status: 'ok'; service: string; environment: string; database: 'connected'; timestamp: string; }
+export interface HealthResponse { status: 'ok'; service: string; environment: string; database: 'connected'; timestamp: string; process_started_at: string; }
 export interface LoginResponse { access_token: string; token_type: 'bearer'; expires_in_seconds: number; employee_id: string; role: 'AGENT' | 'MANAGER' | 'ADMIN'; }
 export interface Badge { code: string; name: string; description: string; icon: string; awarded_at: string; evidence: Record<string, unknown>; }
 export interface Profile {
